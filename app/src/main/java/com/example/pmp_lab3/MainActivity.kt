@@ -20,9 +20,15 @@ class MainActivity : ComponentActivity() {
             WifiNetwork("Network 1"),
             WifiNetwork("Network 2"),
             WifiNetwork("Network 3"),
-            WifiNetwork("Network 3"),
-            WifiNetwork("Network 3"),
-            WifiNetwork("Network 3")
+            WifiNetwork("Network FGDGRFGR"),
+            WifiNetwork("Network 9"),
+            WifiNetwork("Network 67"),
+            WifiNetwork("Network 56"),
+            WifiNetwork("Network FDF"),
+            WifiNetwork("Network 111"),
+            WifiNetwork("Network 4"),
+            WifiNetwork("Network 1323"),
+            WifiNetwork("Network DSGFG")
         )
 
         val adapter = WifiNetworkAdapter(this, wifiNetworks)

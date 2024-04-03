@@ -126,33 +126,41 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listOfNetworks"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/networksList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLayout" />
-
-    <Button
-        android:id="@+id/anotherNetworkBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="0dp"
         android:padding="15dp"
-        android:text="Another network"
-        android:textAllCaps="false"
-        android:fontFamily="@font/inter_semi_bold"
-        android:textSize="18sp"
-        android:background="@drawable/button_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleLayout"
+        tools:layout_editor_absoluteX="20dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listOfNetworks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@+id/anotherNetworkBtn"
+            app:layout_constraintTop_toTopOf="@+id/networksList"
+            tools:layout_editor_absoluteX="15dp" />
+
+        <Button
+            android:id="@+id/anotherNetworkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/inter_semi_bold"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="Another network"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listOfNetworks" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
