@@ -1,10 +1,14 @@
 package com.example.pmp_lab3
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -33,10 +37,37 @@ class WifiNetworkAdapter(private val context: Context, private val wifiNetworks:
         holder.bindData(wifiNetwork)
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, MainActivity::class.java)
-            intent.putExtra("networkSSID", wifiNetworks[position].ssid)
-            context.startActivity(intent)
+            showDialog(position)
         }
     }
 
+    private fun showDialog(networkPosition: Int) {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.dialog_connect_to_network)
+        dialog.setCancelable(true)
+        val dialogCancelBtn: Button = dialog.findViewById(R.id.cancelButton)
+        val dialogConnectBtn: Button = dialog.findViewById(R.id.connectButton)
+
+        val window = dialog.window
+        val layoutParams = window?.attributes
+        layoutParams?.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams?.height = WindowManager.LayoutParams.WRAP_CONTENT
+        layoutParams?.horizontalMargin = 20F
+        window?.attributes = layoutParams
+
+        val networkSSID = wifiNetworks[networkPosition].ssid
+        val tvEnterPasswordForNetwork: TextView = dialog.findViewById(R.id.tvEnterPassword)
+        val tvWithNetworkSSID = tvEnterPasswordForNetwork.text.toString() + networkSSID
+        tvEnterPasswordForNetwork.text = tvWithNetworkSSID
+
+        dialogCancelBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialogConnectBtn.setOnClickListener {
+            Log.e("onClickConnectBtn", "connected to wifi network $networkSSID")
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
 }
